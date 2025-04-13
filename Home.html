@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to My Portfolio</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/script.js" defer></script>
+  <style>
+    /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    header {
+      background-color: #ffc107;
+      padding: 20px 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.1rem;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      list-style: none;
+      padding: 10px;
+    }
+
+    nav ul li {
+      margin: 0 10px;
+    }
+
+    nav ul a {
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+      padding: 5px 10px;
+      transition: background 0.3s, color 0.3s;
+      border-radius: 5px;
+    }
+
+    nav ul a:hover,
+    nav ul a.active {
+      background-color: #333;
+      color: #fff;
+    }
+
+    #darkModeToggle {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      background: #333;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    #darkModeToggle:hover {
+      background: #555;
+    }
+
+    main {
+      padding: 2rem 1rem;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero,
+    .about-me,
+    .testimonials,
+    .projects-section {
+      background: #fff;
+      margin: 1rem auto;
+      padding: 2rem;
+      max-width: 800px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background-color: #6c757d;
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+
+    .btn-secondary:hover {
+      background-color: #545b62;
+    }
+
+    blockquote {
+      background: #f1f1f1;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-left: 5px solid #007bff;
+    }
+
+    cite {
+      display: block;
+      margin-top: 0.5rem;
+      font-style: normal;
+      color: #555;
+    }
+
+    footer {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+
+    #backToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      padding: 12px 16px;
+      font-size: 18px;
+      cursor: pointer;
+      display: none;
+      z-index: 100;
+      transition: background 0.3s;
+    }
+
+    #backToTop:hover {
+      background: #0056b3;
+    }
+
+    /* Projects styling */
+    .project-item {
+      text-align: left;
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background-color: #f9f9f9;
+      border-left: 5px solid #007bff;
+    }
+
+    /* Dark Mode */
+    .dark-mode {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+
+    .dark-mode header {
+      background-color: #222;
+      color: #fff;
+    }
+
+    .dark-mode nav ul a {
+      color: #fff;
+    }
+
+    .dark-mode nav ul a:hover,
+    .dark-mode nav ul a.active {
+      background: #007bff;
+    }
+
+    .dark-mode .hero,
+    .dark-mode .about-me,
+    .dark-mode .testimonials,
+    .dark-mode .projects-section {
+      background: #1e1e1e;
+      color: #ddd;
+      box-shadow: 0 0 5px rgba(255,255,255,0.1);
+    }
+
+    .dark-mode .project-item {
+      background: #2a2a2a;
+      border-left-color: #4dabf7;
+    }
+
+    .dark-mode blockquote {
+      background: #2a2a2a;
+      border-left-color: #4dabf7;
+    }
+
+    .dark-mode footer {
+      background-color: #000;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #darkModeToggle {
+        position: static;
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <div class="container">
+      <h1>Welcome to My Portfolio!</h1>
+      <p>Your digital space for creativity, design, and technology.</p>
+      <button id="darkModeToggle" aria-label="Toggle Dark Mode">🌙</button>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="project.html">Projects</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="Testimonials.html" class="active">Testimonials</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content Section -->
+  <main>
+    <section class="hero fade-in">
+      <h2>Bringing Ideas to Life</h2>
+      <p>Explore my portfolio of creative projects, innovative designs, and inspiring work.</p>
+      <a href="Project.html" class="btn-primary">View My Work</a>
+    </section>
+
+    <section class="about-me fade-in">
+      <h2>About Me</h2>
+      <p>Hi! I’m Daniel Kinyua, a passionate developer and designer. I create beautiful, functional websites and applications that help people. I’m dedicated to delivering high-quality work that brings value to my clients and users.</p>
+      <a href="About.html" class="btn-secondary">Learn More</a>
+    </section>
+
+    <section class="testimonials fade-in">
+      <h2>What People Say</h2>
+      <blockquote>
+        <p>"Your work exceeded our expectations. The project was completed on time and with great attention to detail."</p>
+        <cite>- Client A</cite>
+      </blockquote>
+      <blockquote>
+        <p>"A highly skilled professional who is a pleasure to collaborate with. Highly recommend!"</p>
+        <cite>- Colleague B</cite>
+      </blockquote>
+      <a href="Testimonials.html" class="btn-secondary">Read More Testimonials</a>
+    </section>
+
+    <!-- New Projects Section -->
+    <section class="projects-section fade-in">
+      <h2>My Projects</h2>
+      <ul id="projectList"></ul>
+    </section>
+
+    <!-- Embedded XML Data -->
+    <script type="application/xml" id="projectsXML">
+      <projects>
+        <project>
+          <title>Portfolio Website</title>
+          <description>A personal portfolio website built using HTML, CSS, and JavaScript.</description>
+          <category>Web</category>
+          <year>2025</year>
+        </project>
+        <project>
+          <title>Task Manager App</title>
+          <description>An app to manage tasks and to-do lists using React and Node.js.</description>
+          <category>App</category>
+          <year>2024</year>
+        </project>
+        <project>
+          <title>E-Commerce Website</title>
+          <description>A fully functional e-commerce platform built using PHP and MySQL.</description>
+          <category>Web</category>
+          <year>2023</year>
+        </project>
+      </projects>
+    </script>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 My Portfolio. All rights reserved.</p>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" aria-label="Back to Top">↑</button>
+
+  <!-- JavaScript -->
+  <script>
+    // Dark Mode
+    const toggle = document.getElementById('darkModeToggle');
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      toggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+    });
+
+    // Intersection fade-in
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px',
+    };
+    const appearOnScroll = new IntersectionObserver(function (entries, observer) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+
+    // Back to Top Button
+    const backToTopButton = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 200) {
+        backToTopButton.style.display = 'block';
+      } else {
+        backToTopButton.style.display = 'none';
+      }
+    });
+
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // XML Data Processing
+    const projectList = document.getElementById('projectList');
+    const xmlData = document.getElementById('projectsXML').textContent;
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(xmlData, "application/xml");
+    const projects = xmlDoc.getElementsByTagName('project');
+
+    Array.from(projects).forEach(project => {
+      const title = project.getElementsByTagName('title')[0].textContent;
+      const description = project.getElementsByTagName('description')[0].textContent;
+      const year = project.getElementsByTagName('year')[0].textContent;
+
+      const projectItem = document.createElement('li');
+      projectItem.classList.add('project-item');
+      projectItem.innerHTML = `<h3>${title}</h3><p>${description}</p><p><strong>Year:</strong> ${year}</p>`;
+      projectList.appendChild(projectItem);
+    });
+  </script>
+</body>
+</html>

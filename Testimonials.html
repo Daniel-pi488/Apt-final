@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Testimonials - My Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Testimonials</h1>
+    <button id="darkModeToggle" aria-label="Toggle Dark Mode" title="Toggle Dark Mode">🌙</button>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="project.html">Projects</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="Testimonials.html" class="active" aria-current="page">Testimonials</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="fade-in testimonial-container" aria-live="polite">
+      <!-- Testimonials dynamically inserted here -->
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <p>&copy; 2025 My Portfolio. All rights reserved.</p>
+  </footer>
+
+  <button id="backToTop" aria-label="Back to Top" title="Back to Top">↑</button>
+
+  <script src="script.js"></script>
+
+  <!-- Embedded XML Testimonial Data -->
+  <script type="application/xml" id="testimonialXML">
+    <?xml version="1.0" encoding="UTF-8"?>
+    <testimonials>
+      <testimonial>
+        <author>Client A</author>
+        <message>Working with you was a pleasure! Professional and talented.</message>
+      </testimonial>
+      <testimonial>
+        <author>Colleague B</author>
+        <message>Your portfolio site impressed everyone in the meeting!</message>
+      </testimonial>
+      <testimonial>
+        <author>Partner C</author>
+        <message>Great communication and outstanding work quality!</message>
+      </testimonial>
+    </testimonials>
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Dark Mode Toggle
+      const darkModeToggle = document.getElementById('darkModeToggle');
+      darkModeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        darkModeToggle.setAttribute('aria-label', document.body.classList.contains('dark-mode') ? 'Switch to Light Mode' : 'Switch to Dark Mode');
+      });
+
+      // Back to Top Button
+      const backToTopBtn = document.getElementById('backToTop');
+      window.addEventListener('scroll', () => {
+        backToTopBtn.style.display = window.scrollY > 200 ? 'block' : 'none';
+      });
+
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // Load Testimonials from Embedded XML
+      const container = document.querySelector('.testimonial-container');
+      const rawXML = document.getElementById('testimonialXML')?.textContent;
+      try {
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(rawXML, "application/xml");
+        const testimonials = xmlDoc.getElementsByTagName('testimonial');
+
+        for (let i = 0; i < testimonials.length; i++) {
+          const testimonial = testimonials[i];
+          const blockquote = document.createElement('blockquote');
+          const p = document.createElement('p');
+          p.textContent = testimonial.getElementsByTagName('message')[0].textContent;
+          blockquote.appendChild(p);
+
+          const cite = document.createElement('cite');
+          cite.textContent = `— ${testimonial.getElementsByTagName('author')[0].textContent}`;
+          blockquote.appendChild(cite);
+
+          container.appendChild(blockquote);
+        }
+      } catch (error) {
+        console.error("Error parsing testimonial XML:", error);
+        container.innerHTML = "<p>Testimonials could not be loaded at this time.</p>";
+      }
+    });
+  </script>
+</body>
+</html>

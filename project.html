@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects - My Portfolio</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    header {
+      background-color: #ffc107;
+      padding: 20px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    header h1 {
+      margin-bottom: 10px;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      list-style: none;
+      padding: 10px 0;
+    }
+
+    nav ul li {
+      margin: 0 10px;
+    }
+
+    nav ul a {
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+      padding: 5px 10px;
+      transition: background 0.3s, color 0.3s;
+      border-radius: 5px;
+    }
+
+    nav ul a:hover,
+    nav ul a.active {
+      background-color: #333;
+      color: #fff;
+    }
+
+    #darkModeToggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #333;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 2rem 1rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .filters {
+      margin: 1rem 0;
+      text-align: center;
+    }
+
+    .filter-btn {
+      margin: 0 10px;
+      padding: 10px 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .filter-btn:hover {
+      background: #0056b3;
+    }
+
+    .project-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+      list-style: none;
+      padding: 0;
+    }
+
+    .project-item {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .project-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-item h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .project-item p {
+      font-size: 0.9rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #333;
+      color: white;
+      margin-top: 2rem;
+    }
+
+    #backToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      padding: 12px 16px;
+      font-size: 18px;
+      cursor: pointer;
+      display: none;
+      z-index: 999;
+    }
+
+    /* Dark Mode */
+    .dark-mode {
+      background-color: #121212;
+      color: #eee;
+    }
+
+    .dark-mode header {
+      background-color: #222;
+      color: #fff;
+    }
+
+    .dark-mode nav ul a {
+      color: #fff;
+    }
+
+    .dark-mode nav ul a:hover,
+    .dark-mode nav ul a.active {
+      background: #007bff;
+    }
+
+    .dark-mode .project-item {
+      background: #1f1f1f;
+      color: #ccc;
+      box-shadow: 0 2px 5px rgba(255,255,255,0.05);
+    }
+
+    .dark-mode footer {
+      background-color: #000;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My Projects</h1>
+    <button id="darkModeToggle" aria-label="Toggle Dark Mode">🌙</button>
+    <nav>
+      <ul>
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="project.html" aria-current="page">Projects</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="Testimonials.html">Testimonials</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Project Portfolio</h2>
+      <div class="filters">
+        <button class="filter-btn" data-filter="all" aria-label="Show all projects">All</button>
+        <button class="filter-btn" data-filter="web" aria-label="Show web projects">Web</button>
+        <button class="filter-btn" data-filter="app" aria-label="Show app projects">Apps</button>
+      </div>
+
+      <ul id="projectList" class="project-list" aria-label="Project List">
+        <li class="project-item" data-category="web" aria-labelledby="project-1">
+          <h3 id="project-1">Responsive Website</h3>
+          <p>Built a responsive portfolio using HTML, CSS, and JavaScript.</p>
+        </li>
+        <li class="project-item" data-category="app" aria-labelledby="project-2">
+          <h3 id="project-2">To-Do List App</h3>
+          <p>A simple and elegant productivity app with local storage support.</p>
+        </li>
+        <li class="project-item" data-category="web" aria-labelledby="project-3">
+          <h3 id="project-3">E-commerce Landing Page</h3>
+          <p>Designed a product landing page for an online shop.</p>
+        </li>
+        <li class="project-item" data-category="app" aria-labelledby="project-4">
+          <h3 id="project-4">Weather App</h3>
+          <p>Displays weather data using external APIs and beautiful UI design.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 My Portfolio. All rights reserved.</p>
+  </footer>
+
+  <button id="backToTop" aria-label="Back to Top">↑</button>
+
+  <script>
+    // Dark Mode Toggle
+    const toggle = document.getElementById('darkModeToggle');
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      toggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+    });
+
+    // Filter Buttons
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectItems = document.querySelectorAll('.project-item');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const filter = button.getAttribute('data-filter');
+        projectItems.forEach(item => {
+          if (filter === 'all' || item.getAttribute('data-category') === filter) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Back to Top Button
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTop.style.display = 'block';
+      } else {
+        backToTop.style.display = 'none';
+      }
+    });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
+s

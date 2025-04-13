@@ -1,0 +1,158 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Focus Styles */
+a:focus,
+button:focus {
+  outline: 3px solid #3498db;
+  outline-offset: 3px;
+}
+
+/* Header Styles */
+header {
+  background-color: #f1c40f; /* Yellow */
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+#darkModeToggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+/* Navigation */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+nav ul li a:hover,
+nav ul li a:focus {
+  text-decoration: underline;
+}
+
+nav ul li a.active {
+  font-weight: bold;
+}
+
+/* Testimonials Page Styles */
+.testimonial-container {
+  padding: 30px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.testimonial-container blockquote {
+  border-left: 5px solid #f1c40f;
+  background: #fff;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: background 0.3s ease;
+}
+
+.testimonial-container blockquote:hover {
+  background: #fafafa;
+}
+
+.testimonial-container cite {
+  display: block;
+  margin-top: 10px;
+  font-style: italic;
+  color: #555;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #f1c40f;
+  color: #fff;
+}
+
+/* Back to Top Button */
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  font-size: 1.5rem;
+  background-color: #f1c40f;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+  transition: background-color 0.3s ease;
+}
+
+#backToTop:hover,
+#backToTop:focus {
+  background-color: #e0b90e;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #121212;
+  color: #eee;
+}
+
+body.dark-mode header {
+  background-color: #333;
+  color: #fff;
+}
+
+body.dark-mode nav ul li a {
+  color: #fff;
+}
+
+body.dark-mode .testimonial-container blockquote {
+  background-color: #1e1e1e;
+  border-left-color: #f39c12;
+  color: #eee;
+}
+
+body.dark-mode .testimonial-container cite {
+  color: #ccc;
+}
+
+body.dark-mode footer {
+  background-color: #111;
+  color: #ccc;
+}
+
+body.dark-mode #backToTop {
+  background-color: #f39c12;
+}
